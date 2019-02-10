@@ -22,11 +22,12 @@ export class Contact extends Component {
 
   render() {
     return (
-      <div className="card ca!rd-body mb-3">
+      <div className="card card-body mb-3 py-auto">
         <h4>{this.props.name} {' '}
-         <i onClick={this.click} className={this.state.arrow}> </i>
+         <i onClick={this.click} style={{cursor:'pointer'}} className={this.state.arrow}> </i>
+         <button onClick={this.props.delCon.bind(this,this.props.id)} className="btn btn-danger" style={{float:'right'}}>&times;</button>
         </h4>
-        { (this.state.showDetails) ?
+        { this.state.showDetails ?
           (
           <div className = "container mb-3">
            <ul className = "list-group">
@@ -35,7 +36,7 @@ export class Contact extends Component {
             <li className = "list-group-item">
             Phome :{this.props.phone}</li>
           </ul> 
-          </div>
+         </div>
           ) : null
           
         }
@@ -47,6 +48,7 @@ export class Contact extends Component {
 Contact.propType = {
   name : PropTypes.string.isRequired,
   email : PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired
+  phone: PropTypes.string.isRequired,
+  delCon : PropTypes.func.isRequired
 }
 export default Contact
