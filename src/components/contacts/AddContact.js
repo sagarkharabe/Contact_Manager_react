@@ -6,7 +6,8 @@ export default class AddContact extends Component {
   state = {
     name: "",
     email: "",
-    phone: ""
+    phone: "",
+    errors: {}
   };
 
   handleChange = e => {
@@ -18,6 +19,26 @@ export default class AddContact extends Component {
   };
   onSubmit = (dispatch, e) => {
     e.preventDefault();
+    const { name, email, phone } = this.state;
+
+    if (name === "") {
+      this.setState({
+        errors: { name: "Name is Required." }
+      });
+      return;
+    }
+    if (email === "") {
+      this.setState({
+        errors: { email: "Email is Required." }
+      });
+      return;
+    }
+    if (phone === "") {
+      this.setState({
+        errors: { phone: "Phone is Required." }
+      });
+      return;
+    }
     dispatch({
       type: "ADD_CONTACT",
       payload: {
@@ -28,11 +49,12 @@ export default class AddContact extends Component {
     this.setState({
       name: "",
       email: "",
-      phone: ""
+      phone: "",
+      errors: {}
     });
   };
   render() {
-    const { name, email, phone } = this.state;
+    const { name, email, phone, errors } = this.state;
 
     return (
       <Consumer>
@@ -50,6 +72,7 @@ export default class AddContact extends Component {
                     placeholder={"Enter name .."}
                     type={"text"}
                     onchange={this.handleChange}
+                    error={errors.name}
                   />
                   <TextInputGroup
                     name={"email"}
@@ -58,6 +81,7 @@ export default class AddContact extends Component {
                     placeholder={"Enter email .."}
                     type={"email"}
                     onchange={this.handleChange}
+                    error={errors.email}
                   />
                   <TextInputGroup
                     name={"phone"}
@@ -66,6 +90,7 @@ export default class AddContact extends Component {
                     placeholder={"Enter phone .."}
                     type={"tel"}
                     onchange={this.handleChange}
+                    error={errors.phone}
                   />
 
                   <input
