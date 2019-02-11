@@ -11,7 +11,6 @@ export class Contact extends Component {
   }
 
   click = e => {
-    console.log(e.target);
     this.setState({
       showDetails: !this.state.showDetails,
       arrow: !this.state.showDetails ? "fas fa-sort-up" : "fas fa-sort-down"
