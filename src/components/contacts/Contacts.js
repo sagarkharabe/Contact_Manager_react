@@ -10,7 +10,7 @@ export default class Contacts extends Component {
           return (
             <React.Fragment>
               <h2 className="display-3 mb-2">
-                <span className="text-info">Contacts</span>
+                <span className="text-info">Contact</span> List
               </h2>
               {contacts.map(contact => (
                 <Contact

@@ -17,6 +17,7 @@ export default class AddContact extends Component {
       [name]: value
     });
   };
+
   onSubmit = (dispatch, e) => {
     e.preventDefault();
     const { name, email, phone } = this.state;
@@ -52,6 +53,7 @@ export default class AddContact extends Component {
       phone: "",
       errors: {}
     });
+    this.props.history.push("/");
   };
   render() {
     const { name, email, phone, errors } = this.state;
