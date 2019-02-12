@@ -92,12 +92,13 @@ export default class AddContact extends Component {
                     onchange={this.handleChange}
                     error={errors.phone}
                   />
-
-                  <input
-                    type="submit"
-                    value="Add Contact"
-                    className="btn btn-block btn-primary"
-                  />
+                  <div className="container text-center">
+                    <input
+                      type="submit"
+                      value="Add Contact"
+                      className="btn btn-primary btn-lg "
+                    />
+                  </div>
                 </form>
               </div>
             </div>
