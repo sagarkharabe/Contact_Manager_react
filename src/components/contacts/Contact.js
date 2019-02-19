@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Consumer } from "../../context";
+import axios from "axios";
 export class Contact extends Component {
   constructor(props) {
     super(props);
@@ -17,8 +18,9 @@ export class Contact extends Component {
     });
   };
   delCon = (id, dispatch) => {
-    console.log(id);
-    dispatch({ type: "DELETE_CONTACT", payload: id });
+    axios
+      .delete(`https://jsonplaceholder.typicode.com/users/${id}`)
+      .then(res => dispatch({ type: "DELETE_CONTACT", payload: id }));
   };
   render() {
     return (
@@ -51,7 +53,7 @@ export class Contact extends Component {
                       Email :{this.props.email}
                     </li>
                     <li className="list-group-item">
-                      Phome :{this.props.phone}
+                      Phone :{this.props.phone}
                     </li>
                   </ul>
                 </div>
