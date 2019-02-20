@@ -7,7 +7,7 @@ export default class Contacts extends Component {
       <Consumer>
         {value => {
           const { contacts } = value;
-          console.log(contacts);
+
           return (
             <React.Fragment>
               <h2 className="display-3 mb-2">

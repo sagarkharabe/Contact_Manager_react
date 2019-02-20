@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import { Consumer } from "../../context";
 import axios from "axios";
 export class Contact extends Component {
@@ -17,10 +18,9 @@ export class Contact extends Component {
       arrow: !this.state.showDetails ? "fas fa-sort-up" : "fas fa-sort-down"
     });
   };
-  delCon = (id, dispatch) => {
-    axios
-      .delete(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then(res => dispatch({ type: "DELETE_CONTACT", payload: id }));
+  delCon = async (id, dispatch) => {
+    await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
+    dispatch({ type: "DELETE_CONTACT", payload: id });
   };
   render() {
     return (
@@ -45,6 +45,18 @@ export class Contact extends Component {
                 >
                   &times;
                 </button>
+                <Link to={`contact/edit/${this.props.id}`}>
+                  <i
+                    className="fas fa-pencil-alt"
+                    style={{
+                      cursor: "ponter",
+                      float: "right",
+                      color: "black",
+                      marginRight: "1rem",
+                      marginTop: "3px"
+                    }}
+                  />
+                </Link>
               </h4>
               {this.state.showDetails ? (
                 <div className="container mb-3">
