@@ -45,7 +45,7 @@ export default class AddContact extends Component {
     const res = await axios.post("https://jsonplaceholder.typicode.com/users", {
       ...this.state
     });
-    console.log();
+  
     dispatch({
       type: "ADD_CONTACT",
       payload: {
